@@ -1,16 +1,16 @@
 extends layout
 
 block content
-	.browse
+	.browse.clearfix
 		.items
 			ul
-				li.item.folder: a(href="/") 経営企画本部
+				li.item.folder: a(href="/"): span.glyphicon.glyphicon-folder-close 経営企画本部
 			ul
-				li.item.folder: a(href="/") IT戦略部
-				li.item.folder: a(href="/") 総務部
+				li.item.folder: a(href="/"): span.glyphicon.glyphicon-folder-close IT戦略部
+				li.item.folder: a(href="/"): span.glyphicon.glyphicon-folder-close 総務部
 			ul
-				li.item.folder: a(href="/") GOA
-				li.item.folder: a(href="/") ROME
+				li.item.folder: a(href="/"): span.glyphicon.glyphicon-folder-close GOA
+				li.item.folder: a(href="/"): span.glyphicon.glyphicon-folder-close ROME
 	.view
 		h2.name GOA
 		.content

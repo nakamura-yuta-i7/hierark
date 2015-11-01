@@ -6,6 +6,7 @@ html
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		script(src="/jquery/dist/jquery.min.js")
 		script(src="/bootstrap/dist/js/bootstrap.min.js")
+		script(src="/javascripts/items.js")
 	body
 	.side-bar
 		.profile-area
@@ -21,15 +22,15 @@ html
 				li.setting: a(href="/setting") 設定
 	.main
 		header
-			.menu-button
+			.menu-button: a(href="/") <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
 			h1.site-name: a(href="") #{title}
 			.search-area
 				input.search-text(type="text" name="search")
-		.tabs
+		.tabs.clearfix
 			.tab.default
-				a(href="") 個人フォルダ
+				a(href="/") 個人フォルダ
 			.tab.second
-				a(href="") タブ1
+				a(href="/") タブ1
 		
 		block content
 		

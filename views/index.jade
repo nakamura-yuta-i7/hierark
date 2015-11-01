@@ -1,43 +1,17 @@
 extends layout
 
 block content
-	.wrapper
-	.side-bar
-		.profile-area
-			.profile-image
-			.profile-name
-		.menu-area
+	.browse
+		.items
 			ul
-				li.favarites
-					a(href="/") よく使う項目
-					ul
-						li.item.folder
-							a(href="/") IT戦略部
-						li.item.folder
-							a(href="/") GOA
-				li.setting
-					a(href="/setting") 設定
-	.main
-		header
-			.menu-button
-			h1.site-name #{title}
-			.search-area
-				input.search-text(type="text" name="search")
-		.tabs
-			.tab.default
-			.tab.second
-		.browse
-			.items
-				ul
-					li.item.folder 経営企画本部
-				ul
-					li.item.folder IT戦略部
-					li.item.folder 総務部
-				ul
-					li.item.folder GOA
-					li.item.folder ROME
-		.view
-			h2.name GOA
-			.content
-		footer
-			.fullpath 経営企画本部 > IT戦略部
+				li.item.folder: a(href="/") 経営企画本部
+			ul
+				li.item.folder: a(href="/") IT戦略部
+				li.item.folder: a(href="/") 総務部
+			ul
+				li.item.folder: a(href="/") GOA
+				li.item.folder: a(href="/") ROME
+	.view
+		h2.name GOA
+		.content
+			ファイルコンテンツ

@@ -2,7 +2,36 @@ doctype html
 html
 	head
 		title= title
+		link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		script(src="/jquery/dist/jquery.min.js")
+		script(src="/bootstrap/dist/js/bootstrap.min.js")
 	body
+	.side-bar
+		.profile-area
+			.profile
+				.image
+				.name Yuta Nakamura
+		.menu-area
+			ul
+				li.favarites: a(href="/") よく使う項目
+					ul
+						li.item.folder: a(href="/") IT戦略部
+						li.item.folder: a(href="/") GOA
+				li.setting: a(href="/setting") 設定
+	.main
+		header
+			.menu-button
+			h1.site-name: a(href="") #{title}
+			.search-area
+				input.search-text(type="text" name="search")
+		.tabs
+			.tab.default
+				a(href="") 個人フォルダ
+			.tab.second
+				a(href="") タブ1
+		
 		block content
+		
+		footer
+			.fullpath: a 経営企画本部 > IT戦略部

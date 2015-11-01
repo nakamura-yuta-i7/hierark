@@ -1,8 +1,52 @@
+html, body {
+	height:100%;
+}
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+	color: #00B7FF;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+	font-size:14px;
+	padding:0px;
+	margin:0px;
+}
+
+.side-bar {
+	width:200px;
+	height:100%;
+	background: #ccc;
+	float:left;
+}
+.profile-area {
+    height: 200px;
+    background: #9f9f9f;
+		position: relative;
+}
+.profile {
+	position: absolute;
+	top:80px;
+}
+.profile .image {
+	background: #666;
+	height:80px;
+	width:80px;
+	margin-bottom:10px;
+	
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+.profile .name {
+	font-size:18px;
+	font-weight: 900;
+}
+
+.main {
+	background:#efefef;
+	padding-left: 200px;
+	height:100%;
 }

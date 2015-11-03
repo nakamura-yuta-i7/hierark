@@ -5,7 +5,7 @@ body {
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
+a, a:focus {
 	color: #00B7FF;
 }
 
@@ -103,9 +103,11 @@ header a { color:#fff; }
 .items .item.folder a::after { content:"▶"; font-size:6px; padding-top:5px; padding-left:10px; float:right; display: block; }
 .items .item a span::before { padding-right: 5px; }
 
-.view { padding: 10px; }
-.view h2 { font-size:20px; font-weight: 900;}
-.view .content {  }
+.detail { padding: 10px; }
+.detail h2 { font-size:20px; font-weight: 900;}
+.detail .description { border:1px dotted #ccc; padding:5px; }
+.detail .text { border:1px dotted #ccc; padding:5px; }
+.detail .content {  }
 
 footer {
 	position: absolute;

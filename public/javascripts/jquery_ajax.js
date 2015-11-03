@@ -17,31 +17,16 @@ function JqueryAjax() {
 		});
 	}
 	self.post = function(params) {
-		console.debug( params );
-		var formData = new FormData();
-		if ( params.data ) {
-			Object.keys(params.data).forEach(function(key){
-				formData.append(key, params.data[key]);
-			});
-		}
-		if ( params.file ) {
-			formData.append("file", params.file);
-		}
-		if ( params.files ) {
-			Object.keys(params.files).forEach(function(key){
-				var file = params.files[key];
-				formData.append("files[]", file);
-			});
-		}
-		return $.ajax({
+		console.debug( "ajax.post params:", params );
+		var postData = params.data;
+		
+		var ajaxParams = {
 			async    : true,
 			cache    : false,
 			type     : "post",
 			dataType : params.dataType || "json",
 			url      : params.url || "/",
-			data     : formData,
-			contentType: false, // FormData使う場合、必須
-			processData: false, // FormData使う場合、必須
+			data     : postData,
 			context  : params.context || document,
 			success  : params.success || function(data){ console.debug( data ); },
 			xhr      : params.xhr || function(){
@@ -55,7 +40,33 @@ function JqueryAjax() {
 				}
 				return XHR;
 			}
-		});
+		};
+		
+		// FILEアップロードする場合
+		if ( params.file || params.files ) {
+			
+			var formData = new FormData();
+			if ( params.data ) {
+				Object.keys(params.data).forEach(function(key){
+					formData.append(key, params.data[key]);
+				});
+			}
+			if ( params.file ) {
+				formData.append("file", params.file);
+			}
+			if ( params.files ) {
+				Object.keys(params.files).forEach(function(key){
+					var file = params.files[key];
+					formData.append("files[]", file);
+				});
+			}
+			
+			ajaxParams.data = formData;
+			ajaxParams.contentType = false; // FormData使う場合、必須
+			ajaxParams.processData = false; // FormData使う場合、必須
+		}
+		
+		return $.ajax(ajaxParams);
 	}
 	self.uploadSingle = function(file, params) {
 		params.file = file;

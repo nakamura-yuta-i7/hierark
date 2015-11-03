@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../libs/db");
+var multer = require('multer');
 
 router.get("/items", function(req, res, next) {
 	var reqUrl = req.url;
@@ -18,6 +19,20 @@ router.get("/item/:id", function(req, res, next) {
 		},
 	};
 	db.userItems.findOne(params).then(function(item) {
+		return res.json(item);
+	});
+});
+router.post("/item/save", function(req, res, next) {
+	console.log( "item/save req.body:", req.body );
+	var params = {
+		raw:true,
+		where:{
+			id: req.body.id,
+			name: req.body.name,
+			parent_id: req.body.parent_id,
+		},
+	};
+	db.userItems.findOrCreate(params).then(function(item) {
 		return res.json(item);
 	});
 });

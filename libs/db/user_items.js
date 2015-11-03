@@ -12,6 +12,11 @@ var UserItems = sequelize.define('user_items', {
 		type: Sequelize.STRING,
 		allowNull: false,
 	},
+	description: {
+		type: Sequelize.TEXT,
+		allowNull: true,
+		defaultValue: null,
+	},
 	text: {
 		type: Sequelize.TEXT,
 		allowNull: true,
@@ -40,6 +45,7 @@ module.exports = UserItems;
 // });
 // 
 
+return;
 UserItems.sync({force:true}).then(function () {
 	UserItems.findOrCreate({
 		where: {

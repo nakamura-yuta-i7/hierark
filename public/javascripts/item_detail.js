@@ -20,18 +20,24 @@
 					ItemDetail.loadedItem = item;
 					detailArea.show();
 					detailArea.find("h2").text(item.name);
-					detailArea.find(".description").html(item.description);
-					detailArea.find(".text").html(item.text);
-					detailArea.find(".content").html( app.util.objectToHtml(item) );
+					detailArea.find(".description").html( app.util.autoLink(item.description) );
+					detailArea.find(".text").html( app.util.autoLink(item.text) );
+					
+					var data = {};
+					data.created_at = item.created_at;
+					data.updated_at = item.updated_at;
+					detailArea.find(".content").html( app.util.objectToHtml(data) );
 				}
 			});
-		}, 300);
+		}, 100);
 	}
 	
 	$(document).on("click", ".name, .description, .text", function() {
-		
+		$(this).attr("contenteditable","true").focus();
+		// console.log( "!" );
 	});
 	$(document).on("blur", ".name, .description, .text", function() {
+		$(this).attr("contenteditable","false");
 		var detailArea = $(".detail");
 		ajax.post({
 			url: "/api/item/update",

@@ -6,3 +6,7 @@ app.util.objectToHtml = function(obj) {
 	});
 	return html;
 }
+app.util.autoLink = function(str) {
+	if ( ! str ) return str;
+	return str.replace(/((http|https|ftp):\/\/[\w?=&.\/-;#~%-]+(?![\w\s?&.\/;#~%"=-]*>))/g, '<a target="_blank" href="$1">$1</a> ');
+}

@@ -95,7 +95,7 @@ header a { color:#fff; }
 .tabs .tab.default {
 	background: #efefef;
 }
-.items { white-space: nowrap; background: #efefef; height:100px; border-bottom:1px solid #ccc; overflow: auto; }
+.items { font-size:13px; white-space: nowrap; background: #efefef; height:100px; border-bottom:1px solid #ccc; overflow: auto; }
 .items .inner { height:100%; }
 .items ul { float:left; padding-left: 0px; border-right:1px solid #ccc; height:100%; margin-bottom:0px; min-width: 80px; overflow-x:auto; }
 .items .item { list-style: none; white-space: nowrap; }
@@ -104,9 +104,10 @@ header a { color:#fff; }
 .items .item a span::before { padding-right: 5px; }
 
 .detail { padding: 10px; display: none; }
-.detail h2 { font-size:20px; font-weight: 900; margin-bottom:10px; }
-.detail .description { border:1px dotted #ccc; padding:2px; margin-bottom:5px; }
-.detail .text { border:1px dotted #ccc; padding:2px; margin-bottom:5px; }
+.detail h2 { border:1px dotted #ccc; padding:2px; font-size:20px; font-weight: 900; margin-bottom:10px; }
+.detail .description { border:1px dotted #ccc; padding:2px; margin-bottom:5px; min-height: 2em; }
+.detail .text { border:1px dotted #ccc; padding:2px; margin-bottom:5px; min-height: 10em; }
+.detail [contenteditable=true] { border:1px dotted #ccc; }
 .detail .content {  }
 
 footer {

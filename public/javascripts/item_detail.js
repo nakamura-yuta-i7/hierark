@@ -4,6 +4,7 @@
 	function ItemDetail() {
 	}
 	
+	ItemDetail.loadedItem = null;
 	var doLoadTimer = null;
 	ItemDetail.loadContent = function(url) {
 		if ( doLoadTimer ) {
@@ -16,9 +17,11 @@
 			ajax.get({
 				url: url,
 				success: function(item) {
+					ItemDetail.loadedItem = item;
+					detailArea.show();
 					detailArea.find("h2").text(item.name);
-					detailArea.find(".description").text(item.description);
-					detailArea.find(".text").text(item.text);
+					detailArea.find(".description").html(item.description);
+					detailArea.find(".text").html(item.text);
 					detailArea.find(".content").html( app.util.objectToHtml(item) );
 				}
 			});
@@ -26,9 +29,21 @@
 	}
 	
 	$(document).on("click", ".name, .description, .text", function() {
-		$(this).attr("contenteditable",true);
+		
 	});
-	$(document).on(".blur", ".name, .description, .text", function() {
-		$(this).removeAttr("contenteditable");
+	$(document).on("blur", ".name, .description, .text", function() {
+		var detailArea = $(".detail");
+		ajax.post({
+			url: "/api/item/update",
+			data: {
+				id: ItemDetail.loadedItem.id,
+				name:        detailArea.find("h2").text(),
+				description: detailArea.find(".description").html(),
+				text:        detailArea.find(".text").html()
+			},
+			success: function(item) {
+				
+			}
+		});
 	});
 })();

@@ -103,10 +103,10 @@ header a { color:#fff; }
 .items .item.folder a::after { content:"▶"; font-size:6px; padding-top:5px; padding-left:10px; float:right; display: block; }
 .items .item a span::before { padding-right: 5px; }
 
-.detail { padding: 10px; }
-.detail h2 { font-size:20px; font-weight: 900;}
-.detail .description { border:1px dotted #ccc; padding:5px; }
-.detail .text { border:1px dotted #ccc; padding:5px; }
+.detail { padding: 10px; display: none; }
+.detail h2 { font-size:20px; font-weight: 900; margin-bottom:10px; }
+.detail .description { border:1px dotted #ccc; padding:2px; margin-bottom:5px; }
+.detail .text { border:1px dotted #ccc; padding:2px; margin-bottom:5px; }
 .detail .content {  }
 
 footer {

@@ -42,7 +42,10 @@ void function() {
 		itemsMousetrap.bind('left', function(e) {
 			pressKey = e.keyIdentifier;
 			console.log( "left e.keyIdentifier:", e.keyIdentifier );
-			$(":focus").closest("ul").prev().find("li[selected] a").focus();
+			var item = $(":focus").closest("ul").prev().find("li[selected]");
+			item.find("a").focus();
+			var url = item.find("a").attr("href");
+			app.ItemDetail.loadContent(url);
 		});
 		$(document).on("focus",".items ul li a", function(e) {
 			if ( pressKey ) {
@@ -60,7 +63,7 @@ void function() {
 			getSelection().removeAllRanges(); // 選択範囲をすべて解除
 			
 			var clickedItem = $(this);
-			app.Item.save(clickedItem);
+			app.Item.add(clickedItem);
 			return false;
 		});
 		// ULを右クリックした時
@@ -68,7 +71,7 @@ void function() {
 			e.preventDefault();
 			getSelection().removeAllRanges(); // 選択範囲をすべて解除
 			var clickedItem = $(this).prev().find("li[selected]");
-			app.Item.save(clickedItem);
+			app.Item.add(clickedItem);
 		});
 	}
 	Items.prototype.addRootItems = function(items) {

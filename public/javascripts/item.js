@@ -23,12 +23,12 @@ void function() {
 		li.append(a);
 		return li;
 	}
-	Item.save = function(parentItem) {
+	Item.add = function(parentItem) {
 		var name = "";
 		var parent_id = parentItem.attr("item_id");
 		if ( name = prompt("新規作成します", "新しいアイテム") ) {
 			ajax.post({
-				url: "/api/item/save",
+				url: "/api/item/add",
 				data: {
 					name: name,
 					parent_id: parent_id

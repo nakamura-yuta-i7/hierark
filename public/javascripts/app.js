@@ -1,0 +1,3 @@
+void function setGlobalVariables() {
+	app = {};
+}();

@@ -20,7 +20,6 @@
 					ItemDetail.loadedItem = item;
 					detailArea.show();
 					detailArea.find("h2").text(item.name);
-					detailArea.find(".description").html( app.util.autoLink(item.description) );
 					detailArea.find(".text").html( app.util.autoLink(item.text) );
 					
 					var data = {};
@@ -32,11 +31,11 @@
 		}, 100);
 	}
 	
-	$(document).on("click", ".name, .description, .text", function() {
+	$(document).on("click", ".name, .text", function() {
 		$(this).attr("contenteditable","true").focus();
 		// console.log( "!" );
 	});
-	$(document).on("blur", ".name, .description, .text", function() {
+	$(document).on("blur", ".name, .text", function() {
 		$(this).attr("contenteditable","false");
 		var detailArea = $(".detail");
 		ajax.post({
@@ -44,7 +43,6 @@
 			data: {
 				id: ItemDetail.loadedItem.id,
 				name:        detailArea.find("h2").text(),
-				description: detailArea.find(".description").html(),
 				text:        detailArea.find(".text").html()
 			},
 			success: function(item) {

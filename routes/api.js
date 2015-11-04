@@ -43,9 +43,6 @@ router.post("/item/update", function(req, res, next) {
 	if ( req.body.name ) {
 		values.name = req.body.name;
 	}
-	if ( req.body.description ) {
-		values.description = req.body.description;
-	}
 	if ( req.body.text ) {
 		values.text = req.body.text;
 	}

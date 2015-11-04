@@ -102,7 +102,7 @@ void function() {
 								width += $(this).outerWidth();
 							});
 							console.log( "total width:", width );
-							$(".items .inner").width(width+1);
+							$(".items .inner").width(width+20);
 						}();
 						// .itemsエリア内のスクロールを右に寄せる
 						void function() {

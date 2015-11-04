@@ -105,7 +105,6 @@ header a { color:#fff; }
 
 .detail { padding: 10px; display: none; }
 .detail h2 { border:1px dotted #ccc; padding:2px; font-size:20px; font-weight: 900; margin-bottom:10px; }
-.detail .description { border:1px dotted #ccc; padding:2px; margin-bottom:5px; min-height: 2em; }
 .detail .text { border:1px dotted #ccc; padding:2px; margin-bottom:5px; min-height: 10em; }
 .detail [contenteditable=true] { border:1px dotted #ccc; }
 .detail .content {  }

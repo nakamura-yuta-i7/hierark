@@ -12,11 +12,6 @@ var UserItems = sequelize.define('user_items', {
 		type: Sequelize.STRING,
 		allowNull: false,
 	},
-	description: {
-		type: Sequelize.TEXT,
-		allowNull: true,
-		defaultValue: null,
-	},
 	text: {
 		type: Sequelize.TEXT,
 		allowNull: true,

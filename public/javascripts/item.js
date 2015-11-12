@@ -33,9 +33,9 @@ void function() {
 					name: name,
 					parent_id: parent_id
 				},
-				success: function(data) {
+				success: function(new_item) {
 					parentItem.find("a").trigger("click");
-					console.log( "ajax item/save data:", data );
+					console.log( "ajax item/save data:", new_item );
 				}
 			});
 		}

@@ -32,8 +32,8 @@ router.post("/item/add", function(req, res, next) {
 			parent_id: req.body.parent_id,
 		},
 	};
-	db.userItems.findOrCreate(params).then(function(item) {
-		return res.json(item);
+	db.userItems.findOrCreate(params).then(function(items) {
+		return res.json(items[0]);
 	});
 });
 router.post("/item/update", function(req, res, next) {

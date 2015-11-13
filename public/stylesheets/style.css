@@ -102,6 +102,7 @@ header a { color:#fff; }
 .items .item a { padding: 3px 3px 3px 8px; display: block; padding-right:5px; }
 .items .item.folder a::after { content:"▶"; font-size:6px; padding-top:5px; padding-left:10px; float:right; display: block; }
 .items .item a span::before { padding-right: 5px; }
+.items .ui-resizable-handle.ui-resizable-s { background: #ccc; }
 
 .detail { padding: 10px; display: none; }
 .detail h2 { border:1px dotted #ccc; padding:2px; font-size:20px; font-weight: 900; margin-bottom:10px; }

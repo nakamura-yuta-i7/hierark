@@ -23,6 +23,11 @@ void function() {
 		}();
 	}
 	Items.prototype.setContextMenuEvent = function() {
+		$(function() {
+			$(".items").resizable({
+				handles: "s",
+			});
+		});
 		// フォルダを右クリックした時
 		$(document).on("contextmenu", ".items ul li.folder", function(e) {
 			e.preventDefault();

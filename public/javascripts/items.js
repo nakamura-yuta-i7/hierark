@@ -24,9 +24,23 @@ void function() {
 	}
 	Items.prototype.setContextMenuEvent = function() {
 		$(function() {
-			$(".items").resizable({
+			$(".items .inner").resizable({
 				handles: "s",
+				stop: function( event, ui ) {
+					// リサイズ完了した時にクッキーに高さを保存
+					var h = ui.size.height;
+					$.cookie('.items-resized-height', h);
+				},
+				resize: function( event, ui ) {
+					var h = ui.size.height;
+					$(".items").height(h);
+				}
 			});
+			// クッキーに記憶した高さがあれば調整
+			var savedHeight = $.cookie('.items-resized-height');
+			if ( savedHeight ) {
+				$(".items").height(savedHeight);
+			}
 		});
 		// フォルダを右クリックした時
 		$(document).on("contextmenu", ".items ul li.folder", function(e) {

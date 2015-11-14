@@ -2,7 +2,7 @@ html, body {
 	height:100%;
 }
 body {
-	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font: 14px "Lucida Grande", "meiryo", Helvetica, Arial, sans-serif;
 }
 
 a, a:focus {
@@ -95,14 +95,17 @@ header a { color:#fff; }
 .tabs .tab.default {
 	background: #efefef;
 }
-.items { font-size:13px; white-space: nowrap; background: #efefef; height:100px; border-bottom:1px solid #ccc; overflow: auto; }
-.items .inner { height:100%; }
+.items { font-size:13px; white-space: nowrap; background: #efefef; min-height:100px; border-bottom:1px solid #ccc; overflow: auto; }
+.items .inner { height: 100%; min-height:100%; min-width: 100%; }
 .items ul { float:left; padding-left: 0px; border-right:1px solid #ccc; height:100%; margin-bottom:0px; min-width: 80px; overflow-x:auto; }
 .items .item { list-style: none; white-space: nowrap; }
+.items .item.over a { background: red !important; }
+.items .item * { pointer-events: none; }
+.items .item .name { font-family: "Lucida Grande", "meiryo", Helvetica, Arial, sans-serif; }
 .items .item a { padding: 3px 3px 3px 8px; display: block; padding-right:5px; }
 .items .item.folder a::after { content:"▶"; font-size:6px; padding-top:5px; padding-left:10px; float:right; display: block; }
 .items .item a span::before { padding-right: 5px; }
-.items .ui-resizable-handle.ui-resizable-s { background: #ccc; }
+.items .ui-resizable-handle.ui-resizable-s { background: #ccc; bottom:0; }
 
 .detail { padding: 10px; display: none; }
 .detail h2 { border:1px dotted #ccc; padding:2px; font-size:20px; font-weight: 900; margin-bottom:10px; }

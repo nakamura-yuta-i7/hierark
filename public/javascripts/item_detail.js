@@ -31,11 +31,11 @@
 		}, 100);
 	}
 	
-	$(document).on("click", ".name, .text", function() {
+	$(document).on("click", ".content .name, .text", function() {
 		$(this).attr("contenteditable","true").focus();
 		// console.log( "!" );
 	});
-	$(document).on("blur", ".name, .text", function() {
+	$(document).on("blur", ".content .name, .text", function() {
 		$(this).attr("contenteditable","false");
 		var detailArea = $(".detail");
 		ajax.post({

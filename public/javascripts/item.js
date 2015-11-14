@@ -1,5 +1,6 @@
 $(function() {
 	app.Item.setClickEvent();
+	app.Item.setDnDEvent();
 });
 void function() {
 	app.Item = Item;
@@ -13,10 +14,12 @@ void function() {
 		var type = data.type;
 		var span = $("<span>");
 		span.addClass("glyphicon").addClass("glyphicon-folder-close");
-		span.text(name);
-		var a = $("<a href=/api/item/" + id + " item_id=" + id + ">");
+		var name_span = $("<span class=name>");
+		name_span.text(name);
+		span.append(name_span);
+		var a = $("<a href=/api/item/" + id + " item_id=" + id + " draggable=false>");
 		a.append(span);
-		var li = $("<li item_id="+ id +">").addClass("item");
+		var li = $("<li item_id="+ id +" draggable=true>").addClass("item");
 		if ( type == "folder" ) {
 			li.addClass("folder");
 		}
@@ -61,7 +64,7 @@ void function() {
 			
 			// アイテム背景色を調整
 			void function adjustBgColor() {
-				$(this).closest("ul").find("a").css("background-color", "transparent");
+				$(this).closest("ul").find("a").css("background-color", "");
 				$(this).css("background-color","#cccccc");
 			}.bind(this)();
 			
@@ -113,4 +116,45 @@ void function() {
 			}();
 		});
 	}
+
+	app.Item.setDnDEvent = function() {
+		var drag_item_id = null;
+		var drop_item_id = null;
+		
+		$(document).on("dragstart", ".items .item", function(e) {
+			drag_item_id = $(this).attr("item_id");
+			console.log( "dragstart" );
+		});
+		$(document).on("dragenter", ".items .item", function(e) {
+			drop_item_id = $(this).attr("item_id");
+			$(this).addClass("over");
+			console.log( "dragenter" );
+		});
+		$(document).on("dragleave", ".items .item", function(e) {
+			$(this).removeClass("over");
+			console.log( "dragleave" );
+		});
+		$(document).on("dragend", ".items .item", function(e) {
+			
+			if ( ! drop_item_id ) {
+				console.log( "dropしたitem_idがnull、return false" );
+				return false;
+			}
+			if ( drag_item_id == drop_item_id ) {
+				console.log( "同じIDの為、return false" );
+				return false;
+			}
+			var m = drag_item_id + "を" + drop_item_id + "にいれますか？";
+			if ( confirm(m) ) {
+				$(this).remove();
+			}
+			dragoverStyleReset();
+			console.log( "dragend" );
+		});
+		function dragoverStyleReset() {
+			console.log("dragoverStyleReset.");
+			$(".items .item").removeClass("over");
+		}
+	}
+	
 }();

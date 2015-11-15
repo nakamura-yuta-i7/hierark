@@ -33,10 +33,41 @@ require("./item_detail.scss");
 		}, 100);
 	}
 	
+	// 高さ調整
+	app.ItemDetail.adjustHeight = function() {
+		console.log( "header:", $("header").outerHeight() );
+		console.log( ".browse:", $(".browse").outerHeight() );
+		console.log( ".tabs:", $(".tabs").outerHeight() );
+		console.log( "footer:", $("footer").outerHeight() );
+		console.log( "window:", $(window).height() );
+		var total = $("header").outerHeight()
+			+ $(".tabs").outerHeight()
+			+ $(".browse").outerHeight()
+			+ $("footer").outerHeight()
+		console.log( {total} );
+		var h = $(window).height() - total;
+		console.log( {setHeight: h} );
+		$(".detail").outerHeight( h );
+	}
+	$(function() {
+		// 初期表示で調整
+		app.ItemDetail.adjustHeight();
+		// ツリー高さ調整時にも調整しないと
+		$(".items").on("resize", function() {
+			app.ItemDetail.adjustHeight();
+		});
+		// ウィンドウリサイズ時にも
+		$(window).on("resize", function() {
+			app.ItemDetail.adjustHeight();
+		});
+	});
+	
+	// 編集モード
 	$(document).on("click", ".content .name, .text", function() {
 		$(this).attr("contenteditable","true").focus();
 		// console.log( "!" );
 	});
+	// 編集確定
 	$(document).on("blur", ".content .name, .text", function() {
 		$(this).attr("contenteditable","false");
 		var detailArea = $(".detail");

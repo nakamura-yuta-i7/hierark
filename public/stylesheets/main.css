@@ -63,7 +63,9 @@ footer {
   bottom: 0; }
 .detail {
   padding: 10px;
-  display: none; }
+  display: none;
+  box-sizing: border-box;
+  overflow: auto; }
 
 .detail h2 {
   border: 1px dotted #ccc;

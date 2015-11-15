@@ -1,5 +1,6 @@
 $(function() {
 	app.Item.setClickEvent();
+	app.Item.setRightClickEvent();
 	app.Item.setDnDEvent();
 });
 void function() {
@@ -146,7 +147,20 @@ void function() {
 			}
 			var m = drag_item_id + "を" + drop_item_id + "にいれますか？";
 			if ( confirm(m) ) {
-				$(this).remove();
+				var parent_id = drop_item_id;
+				var id = drag_item_id;
+				ajax.post({
+					url: "/api/item/update",
+					data: {
+						id: id,
+						parent_id: parent_id
+					},
+					success: function(new_item) {
+						$(".item[item_id="+ parent_id +"] a").trigger("click").focus();
+						console.log( "ajax item/updated_item:", new_item );
+						$(this).remove();
+					}.bind(this)
+				});
 			}
 			dragoverStyleReset();
 			console.log( "dragend" );

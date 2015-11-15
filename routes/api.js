@@ -46,6 +46,9 @@ router.post("/item/update", function(req, res, next) {
 	if ( req.body.text ) {
 		values.text = req.body.text;
 	}
+	if ( req.body.parent_id ) {
+		values.parent_id = req.body.parent_id;
+	}
 	var options = {
 		where: { id: req.body.id }
 	};

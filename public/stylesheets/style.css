@@ -100,7 +100,7 @@ header a { color:#fff; }
 .items ul { float:left; padding-left: 0px; border-right:1px solid #ccc; height:100%; margin-bottom:0px; min-width: 80px; overflow-x:auto; }
 .items .item { list-style: none; white-space: nowrap; }
 .items .item.over a { background: red !important; }
-.items .item * { pointer-events: none; }
+.items .item a * { pointer-events: none; }
 .items .item .name { font-family: "Lucida Grande", "meiryo", Helvetica, Arial, sans-serif; }
 .items .item a { padding: 3px 3px 3px 8px; display: block; padding-right:5px; }
 .items .item.folder a::after { content:"▶"; font-size:6px; padding-top:5px; padding-left:10px; float:right; display: block; }

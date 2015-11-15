@@ -31,10 +31,10 @@ function JqueryAjax() {
 			context  : params.context || document,
 			success  : params.success || function(data){ console.debug( data ); },
 			xhr      : params.xhr || function(){
-				XHR = $.ajaxSettings.xhr();
+				var XHR = $.ajaxSettings.xhr();
 				if( XHR.upload ){
 					XHR.upload.addEventListener('progress',function(e){
-						progre = parseInt( e.loaded / e.total * 10000 ) / 100;
+						var progre = parseInt( e.loaded / e.total * 10000 ) / 100;
 						console.debug(progre+"%");
 						$("#progress-bar").width(progre + "%");
 					}, false);
@@ -66,8 +66,8 @@ function JqueryAjax() {
 			ajaxParams.contentType = false; // FormData使う場合、必須
 			ajaxParams.processData = false; // FormData使う場合、必須
 		}
-		
-		return $.ajax(ajaxParams);
+		var ajax = $.ajax(ajaxParams);
+		return ajax;
 	}
 	self.uploadSingle = function(file, params) {
 		params.file = file;

@@ -58,4 +58,16 @@ router.post("/item/update", function(req, res, next) {
 		return res.json(err);
 	});
 });
+router.post("/item/delete", function(req, res, next) {
+	console.log( "item/delete req.body:", req.body );
+	var params = {
+		raw:true,
+		where:{
+			id: req.body.id,
+		},
+	};
+	db.userItems.destroy(params).then(function(deleteRows) {
+		return res.json({deleteRows:deleteRows});
+	});
+});
 module.exports = router;

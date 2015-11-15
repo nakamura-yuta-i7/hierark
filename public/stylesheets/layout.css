@@ -1,0 +1,97 @@
+html, body {
+	height:100%;
+}
+body {
+	font: 14px "Lucida Grande", "meiryo", Helvetica, Arial, sans-serif;
+}
+
+a, a:focus {
+	color: #00B7FF;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+	font-size:14px;
+	padding:0px;
+	margin:0px;
+}
+
+.side-bar {
+	width:200px;
+	height:100%;
+	background: #ccc;
+	float:left;
+}
+.profile-area {
+    height: 200px;
+    background: #9f9f9f;
+		position: relative;
+}
+.profile {
+	position: absolute;
+	top:80px;
+}
+.profile .image {
+	background: #666;
+	height:80px;
+	width:80px;
+	margin-bottom:10px;
+	
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
+}
+.profile .name {
+	font-size:18px;
+	font-weight: 900;
+}
+
+.main {
+	background:#efefef;
+	float: right;
+	width: calc(100% - 200px);
+	height:100%;
+}
+
+header {
+	height:42px;
+	background: #666;
+	color: #fff;
+	position: relative;
+}
+header a { color:#fff; }
+.menu-button {
+	position: absolute;
+	top:3px;
+	left: 3px;
+}
+.menu-button a {
+	padding:10px;
+	display: block;
+}
+.site-name {
+	font-size:20px;
+	font-weight: 900;
+	position: absolute;
+	top:10px;
+	left:38px;
+}
+.search-area {
+	position: absolute;
+	top: 9px;
+	right: 9px;
+}
+.tabs {
+  background: #ccc;
+	padding: 3px 3px 0px 3px;
+}
+.tabs .tab {
+  float: left;
+	background: #cfcfcf;
+}
+.tabs .tab a {
+	padding:5px 10px;
+	display: block;
+}
+.tabs .tab.default {
+	background: #efefef;
+}

@@ -2,6 +2,7 @@
 	var itemsArea = document.querySelector(".items");
 	var itemsMousetrap = new Mousetrap(itemsArea);
 	var pressKey = null;
+	// アイテムフォーカス移動系
 	itemsMousetrap.bind('up', function(e) {
 		pressKey = e.keyIdentifier;
 		$(":focus").closest("li").prev().find("a").focus();
@@ -33,6 +34,13 @@
 			}
 			pressKey = null;
 		}
+	});
+	// アイテムフォーカス時DELキー
+	itemsMousetrap.bind(['del','backspace'], function(e) {
+		e.preventDefault();
+		var id = $(e.target).attr("item_id");
+		console.log( id );
+		app.Item.delete(id);
 	});
 })();
 	

@@ -173,5 +173,21 @@ void function() {
 	app.Item.setRightClickEvent = function() {
 		
 	}
+	app.Item.delete = function(id) {
+		ajax.post({
+			url: "/api/item/delete",
+			data: {
+				id: id,
+			},
+			success: function(deletedCount) {
+				// 削除する前にフォーカスを他のアイテムに移動させる
+				var target = $(".item[item_id="+id+"]");
+				target.closest("ul").find("a")[0].focus();
+				// アイテム削除
+				target.remove();
+				console.log( "del item success.  count:", deletedCount );
+			}
+		});
+	}
 	
 }();

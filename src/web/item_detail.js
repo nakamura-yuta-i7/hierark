@@ -1,3 +1,5 @@
+require("./item_detail.scss");
+
 (function() {
 	app.ItemDetail = ItemDetail;
 	

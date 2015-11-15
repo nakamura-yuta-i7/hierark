@@ -145,8 +145,7 @@ void function() {
 				console.log( "同じIDの為、return false" );
 				return false;
 			}
-			var m = drag_item_id + "を" + drop_item_id + "にいれますか？";
-			if ( confirm(m) ) {
+			(function() {
 				var parent_id = drop_item_id;
 				var id = drag_item_id;
 				ajax.post({
@@ -161,7 +160,7 @@ void function() {
 						$(this).remove();
 					}.bind(this)
 				});
-			}
+			})();
 			dragoverStyleReset();
 			console.log( "dragend" );
 		});
@@ -169,6 +168,10 @@ void function() {
 			console.log("dragoverStyleReset.");
 			$(".items .item").removeClass("over");
 		}
+	}
+	
+	app.Item.setRightClickEvent = function() {
+		
 	}
 	
 }();

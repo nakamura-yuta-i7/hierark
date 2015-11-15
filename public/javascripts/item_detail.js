@@ -42,7 +42,7 @@
 			url: "/api/item/update",
 			data: {
 				id: ItemDetail.loadedItem.id,
-				name: detailArea.find("h2").text(),
+				name: detailArea.find("h2.name").text(),
 				text: detailArea.find(".text").html()
 			},
 			success: function(item) {

@@ -1,6 +1,6 @@
 $(function() {
 	var items = new app.Items();
-	
+	app.Items.setKeyPressAction();
 });
 
 void function() {
@@ -61,5 +61,8 @@ void function() {
 	}
 	Items.prototype.addRootItems = function(items) {
 		this.area.append(new app.ItemList(items));
+	}
+	Items.setKeyPressAction = function() {
+		
 	}
 }();

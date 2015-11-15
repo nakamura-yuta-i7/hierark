@@ -1,3 +1,4 @@
+module.exports = new JqueryAjax;
 function JqueryAjax() {
 	if ( this instanceof Window ) {
 		// throw Error("こらー！newして使ってくださいね");

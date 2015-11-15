@@ -3,21 +3,8 @@ html
 	head
 		title= title
 		link(rel='stylesheet', href='/bootstrap/dist/css/bootstrap.min.css')
-		link(rel='stylesheet', href='/stylesheets/style.css')
-		script(src="/jquery/dist/jquery.min.js")
 		link(rel='stylesheet', href='/jquery-ui/themes/base/jquery-ui.min.css')
-		script(src="/jquery-ui/jquery-ui.min.js")
-		script(src="/jquery.cookie/jquery.cookie.js")
-		script(src="/bootstrap/dist/js/bootstrap.min.js")
-		script(src="/mousetrap/mousetrap.min.js")
-		script(src="/javascripts/jquery_ajax.js")
-		script(src="/javascripts/app.js")
-		script(src="/javascripts/app/util.js")
-		script(src="/javascripts/key_action.js")
-		script(src="/javascripts/items.js")
-		script(src="/javascripts/item_list.js")
-		script(src="/javascripts/item.js")
-		script(src="/javascripts/item_detail.js")
+		link(rel='stylesheet', href='/stylesheets/style.css')
 	body
 	.side-bar
 		.profile-area
@@ -37,6 +24,7 @@ html
 			h1.site-name: a(href="") #{title}
 			.search-area
 				input.search-text(type="text" name="search")
+			
 		.tabs.clearfix
 			.tab.default
 				a(href="/") 個人フォルダ
@@ -47,3 +35,11 @@ html
 		
 		footer
 			.fullpath: a 経営企画本部 > IT戦略部
+		
+		script(src="/jquery/dist/jquery.min.js")
+		script(src="/jquery-ui/jquery-ui.min.js")
+		script(src="/jquery.cookie/jquery.cookie.js")
+		script(src="/bootstrap/dist/js/bootstrap.min.js")
+		script(src="/mousetrap/mousetrap.min.js")
+		script(src="/javascripts/init.js")
+		script(src="/javascripts/main.js")

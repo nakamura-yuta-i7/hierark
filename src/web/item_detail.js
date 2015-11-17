@@ -50,10 +50,8 @@ require("./item_detail.scss");
 		$(".detail").outerHeight( h );
 	}
 	$(function() {
-		// 初期表示で調整
-		app.ItemDetail.adjustHeight();
 		// ツリー高さ調整時にも調整しないと
-		$(".items").on("resize", function() {
+		$(".browse").on("resize", function() {
 			app.ItemDetail.adjustHeight();
 		});
 		// ウィンドウリサイズ時にも
@@ -63,12 +61,15 @@ require("./item_detail.scss");
 	});
 	
 	// 編集モード
-	$(document).on("click", ".content .name, .text", function() {
+	$(document).on("click", ".detail .name, .detail .text", function() {
 		$(this).attr("contenteditable","true").focus();
-		// console.log( "!" );
+		console.log( "編集モード" );
 	});
 	// 編集確定
-	$(document).on("blur", ".content .name, .text", function() {
+	$(document).on("blur", ".detail .name", editEnter);
+	$(document).on("blur", ".detail .text", editEnter);
+	function editEnter() {
+		console.log( "編集確定", this );
 		$(this).attr("contenteditable","false");
 		var detailArea = $(".detail");
 		ajax.post({
@@ -78,9 +79,10 @@ require("./item_detail.scss");
 				name: detailArea.find("h2.name").text(),
 				text: detailArea.find(".text").html()
 			},
-			success: function(item) {
-				console.log( "/api/item/update item:", item );
+			success: function(updatedItem) {
+				console.log( {updatedItem} );
+				app.Item.refresh( updatedItem );
 			}
 		});
-	});
+	};
 })();

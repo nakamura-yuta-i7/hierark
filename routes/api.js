@@ -40,23 +40,23 @@ router.post("/item/update", function(req, res, next) {
 	console.log( "item/save req.body:", req.body );
 	
 	var values = {};
-	if ( req.body.name ) {
+	if ( req.body.name !== undefined ) {
 		values.name = req.body.name;
 	}
-	if ( req.body.text ) {
+	if ( req.body.text !== undefined ) {
 		values.text = req.body.text;
 	}
-	if ( req.body.parent_id ) {
+	if ( req.body.parent_id !== undefined ) {
 		values.parent_id = req.body.parent_id;
 	}
 	var options = {
 		where: { id: req.body.id }
 	};
 	db.userItems.update(values, options).then(function(item) {
-		return res.json(item);
-	}).catch(function(err) {
-		return res.json(err);
-	});
+		db.userItems.findOne({where:{id:req.body.id}}).then(function(updatedItem) {
+			return res.json(updatedItem);
+		}).catch(res.json);
+	}).catch(res.json);
 });
 router.post("/item/delete", function(req, res, next) {
 	console.log( "item/delete req.body:", req.body );

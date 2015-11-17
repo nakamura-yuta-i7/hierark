@@ -1,5 +1,24 @@
-.detail { padding: 10px; display: none; box-sizing: border-box; overflow: auto; }
-.detail h2 { border:1px dotted #ccc; padding:2px; font-size:20px; font-weight: 900; margin-bottom:10px; }
-.detail .text { border:1px dotted #ccc; padding:2px; margin-bottom:5px; min-height: 10em; background: #fff; }
-.detail [contenteditable=true] { border:1px dotted #ccc; }
-.detail .content {  }
+.detail {
+	padding: 10px;
+	display: none;
+	box-sizing: border-box;
+	overflow: auto;
+	h2 {
+		border: 1px dotted #ccc;
+		padding: 2px;
+		font-size: 20px;
+		font-weight: 900;
+		margin-bottom: 10px;
+	}
+	.text {
+		border: 1px dotted #ccc;
+		padding: 2px;
+		margin-bottom: 5px;
+		min-height: 10em;
+		background: #fff;
+	}
+	[contenteditable=true] {
+		border: 1px dotted #ccc;
+	}
+	.content {}
+}

@@ -21,6 +21,7 @@ void function() {
 				},
 				success: function(data) {
 					self.addRootItems(data);
+					app.ItemDetail.adjustHeight();
 				}
 			});
 		}();
@@ -48,7 +49,7 @@ void function() {
 	}
 	Items.setResizableAction = function() {
 		$(function() {
-			$(".items .inner").resizable({
+			$(".browse").resizable({
 				handles: "s",
 				stop: function( event, ui ) {
 					// リサイズ完了した時にクッキーに高さを保存
@@ -57,13 +58,13 @@ void function() {
 				},
 				resize: function( event, ui ) {
 					var h = ui.size.height;
-					$(".items").height(h);
+					$(".browse").height(h);
 				}
 			});
 			// クッキーに記憶した高さがあれば調整
 			var savedHeight = $.cookie('.items-resized-height');
 			if ( savedHeight ) {
-				$(".items").height(savedHeight);
+				$(".browse").height(savedHeight);
 			}
 		});
 	}

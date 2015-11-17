@@ -45,6 +45,11 @@ void function() {
 		}
 	};
 	
+	Item.refresh = function(item) {
+		$("[item_id="+ item.id +"]").find(".name").html( item.name );
+		console.log( "Item.refresh:", item );
+	}
+	
 	app.Item.setClickEvent = function() {
 		
 		$(document).on("click", ".item a", function(e) {
@@ -70,52 +75,54 @@ void function() {
 			}.bind(this)();
 			
 			// 子アイテムを読み込み
-			void function loadChildItems() {
-				if ( ! clickedItem.hasClass("folder") ) {
-					// クリックしたアイテムがフォルダじゃないなら何もしない
-					return false;
-				}
-				ajax.get({
-					url: "/api/items",
-					data: {
-						parent_id: $(self).attr("item_id")
-					},
-					success: function(items) {
-						
-						// 自身のフォルダ配下のULを一度削除
-						void function destroyChildItem() {
-							var selfUlId = clickedUl.attr("ul_id");
-							var foundFlag = false;
-							parentItemsArea.find("ul").each(function(i) {
-								var eachUl = $(this);
-								var eachUlId = eachUl.attr("ul_id");
-								if ( foundFlag ) {
-									eachUl.remove();
-								}
-								if ( eachUlId == selfUlId ) {
-									foundFlag = true;
-								}
-							});
-						}();
-						// 読み込んだアイテムを追加
-						$(".items .inner").append(new app.ItemList(items));
-						// UL群の合計幅を.itemsにセット
-						void function setItemsWidth() {
-							var width = 0;
-							$(".items ul").each(function(ul) {
-								width += $(this).outerWidth();
-							});
-							console.log( "total width:", width );
-							$(".items .inner").width(width+20);
-						}();
-						// .itemsエリア内のスクロールを右に寄せる
-						void function() {
-							$(".items").scrollLeft(999999);
-						}();
-					}
-				});
-			}();
+			var item_id = $(self).attr("item_id");
+			app.Item.loadChildItems(item_id);
 		});
+	}
+	
+	app.Item.loadChildItems = function(item_id) {
+		
+		void function loadChildItems(item_id) {
+			ajax.get({
+				url: "/api/items",
+				data: {
+					parent_id: item_id
+				},
+				success: function(items) {
+					
+					// 自身のフォルダ配下のULを一度削除
+					void function destroyChildItem() {
+						var selfUlId = $("a[item_id="+ item_id +"]").closest("ul").attr("ul_id");
+						var foundFlag = false;
+						$(".items ul").each(function(i) {
+							var eachUl = $(this);
+							var eachUlId = eachUl.attr("ul_id");
+							if ( foundFlag ) {
+								eachUl.remove();
+							}
+							if ( eachUlId == selfUlId ) {
+								foundFlag = true;
+							}
+						});
+					}();
+					// 読み込んだアイテムを追加
+					$(".items .inner").append(new app.ItemList(items));
+					// UL群の合計幅を.itemsにセット
+					void function setItemsWidth() {
+						var width = 0;
+						$(".items ul").each(function(ul) {
+							width += $(this).outerWidth();
+						});
+						console.log( "total width:", width );
+						$(".items .inner").width(width+10);
+					}();
+					
+					// .itemsエリア内のスクロールを右に寄せる
+					$(".items").scrollLeft( 9999 )
+					
+				}
+			});
+		}(item_id);
 	}
 
 	app.Item.setDnDEvent = function() {

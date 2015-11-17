@@ -8,6 +8,7 @@
 		$(":focus").closest("li").prev().find("a").focus();
 	});
 	itemsMousetrap.bind('down', function(e) {
+		e.preventDefault();
 		pressKey = e.keyIdentifier;
 		$(":focus").closest("li").next().find("a").focus();
 	});

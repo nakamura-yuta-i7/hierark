@@ -17,7 +17,7 @@
     "morgan": "~1.6.1",
     "multer": "^1.1.0",
     "mysql": "^2.9.0",
-    "sequelize": "^3.13.0",
+    "sequelize": "^6.3.5",
     "serve-favicon": "~2.3.0",
     "supervisor": "^0.9.1",
     "swig": "^1.4.2",
